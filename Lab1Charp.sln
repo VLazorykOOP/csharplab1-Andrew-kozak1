@@ -1,25 +1,156 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1Charp", "Lab1Charp\Lab1Charp.csproj", "{CF8A735F-4442-4CC0-AD7F-A002C3967A64}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF8A735F-4442-4CC0-AD7F-A002C3967A64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF8A735F-4442-4CC0-AD7F-A002C3967A64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF8A735F-4442-4CC0-AD7F-A002C3967A64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF8A735F-4442-4CC0-AD7F-A002C3967A64}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DEEAED7C-7A83-4789-8569-839879F20C1F}
-	EndGlobalSection
-EndGlobal
+Завдання 1		
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Введіть внутрішній радіус кільця (r1): ");
+        double r1 = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Введіть зовнішній радіус кільця (r2): ");
+        double r2 = Convert.ToDouble(Console.ReadLine());
+
+        double area = CalculateRingArea(r1, r2);
+        Console.WriteLine($"Площа кільця з внутрішнім радіусом {r1} і зовнішнім радіусом {r2} дорівнює {area}");
+    }
+
+    static double CalculateRingArea(double r1, double r2)
+    {
+        return Math.PI * (r2 * r2 - r1 * r1);
+    }
+}
+Завдання 2
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Введіть тризначне число: ");
+        int number = Convert.ToInt32(Console.ReadLine());
+
+        if (IsAllDigitsSame(number))
+        {
+            Console.WriteLine("Усі цифри числа однакові.");
+        }
+        else
+        {
+            Console.WriteLine("У числі є різні цифри.");
+        }
+    }
+
+    static bool IsAllDigitsSame(int number)
+    {
+        int firstDigit = number / 100;
+        int secondDigit = (number / 10) % 10;
+        int thirdDigit = number % 10;
+
+        return firstDigit == secondDigit && secondDigit == thirdDigit;
+    }
+}
+Завдання 3
+using System;
+
+namespace PointInRegion
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введіть координату x: ");
+            double x = double.Parse(Console.ReadLine());
+
+            Console.Write("Введіть координату y: ");
+            double y = double.Parse(Console.ReadLine());
+
+            double upperCurve = x;
+            double lowerCurve = 12 / x;
+
+            if (y > upperCurve)
+            {
+                Console.WriteLine("Ні");
+            }
+            else if (y < lowerCurve)
+            {
+                Console.WriteLine("Ні");
+            }
+            else
+            {
+                Console.WriteLine("Так");
+            }
+        }
+    }
+}
+Завдання 4
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Введіть стать (м - чоловік, ж - жінка):");
+        char gender = Console.ReadLine()[0];
+
+        switch (Char.ToLower(gender))
+        {
+            case 'м':
+                Console.WriteLine("Чоловічі імена: Олександр, Іван, Петро, Михайло");
+                break;
+            case 'ж':
+                Console.WriteLine("Жіночі імена: Ольга, Ірина, Наталія, Марія");
+                break;
+            default:
+                Console.WriteLine("Некоректна ознака статі.");
+                break;
+        }
+    }
+}
+Завдання 5
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Введіть перше число:");
+        double num1 = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Введіть друге число:");
+        double num2 = Convert.ToDouble(Console.ReadLine());
+
+        double result = SquareOfQuotient(num1, num2);
+        Console.WriteLine($"Результат піднесення у квадрат частки чисел {num1} та {num2}: {result}");
+    }
+
+    static double SquareOfQuotient(double a, double b)
+    {
+        if (b != 0) // Перевірка на ділення на нуль
+        {
+            double quotient = a / b;
+            double square = Math.Pow(quotient, 2);
+            return square;
+        }
+        else
+        {
+            throw new DivideByZeroException("Ділення на нуль неможливе.");
+        }
+    }
+}
+Завдання 6
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Введіть значення для a:");
+        double a = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Введіть значення для b:");
+        double b = Convert.ToDouble(Console.ReadLine());
+
+        double result = a + ((a + b - 1) / (Math.Pow(a, 2) + 1)) - (a * b);
+        Console.WriteLine($"Результат виразу a + ((a + b - 1) / (a^2 + 1)) - a * b: {result}");
+    }
+}
